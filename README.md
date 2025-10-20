@@ -1,5 +1,4 @@
-# NOTE TO DO 
-- rename nama web nya karena kita lupa namany kmrn :"""))
+# FRUITOPIA
 <br>
 
 # React + Vite
