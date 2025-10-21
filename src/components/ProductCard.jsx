@@ -49,14 +49,14 @@ function ProductCard({ product, onDetail, addToCart }) {
           <h5 className="text-white text-center mb-3">{name}</h5>
           <div>
             <Button
-              variant="primary"
+              variant="light"
               className="me-2"
               onClick={() => onDetail(id)}
             >
               Details
             </Button>
-            <Button variant="light" onClick={() => addToCart(product)}>
-              Buy Now
+            <Button variant="primary" onClick={() => addToCart(product)}>
+              Add to Cart
             </Button>
           </div>
         </div>

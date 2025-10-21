@@ -28,11 +28,21 @@ function ProductModal({ product, onClose }) {
             <div className="row">
               <div className="col-md-5">
                 {image ? (
-                  <img src={image} alt={name} className="img-fluid rounded" />
+                  <div
+                    className="overflow-hidden rounded"
+                    style={{ height: "250px" }}
+                  >
+                    <img
+                      src={image}
+                      alt={name}
+                      className="img-fluid w-100 h-100"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
                 ) : (
                   <div
-                    className="bg-secondary d-flex align-items-center justify-content-center text-white"
-                    style={{ height: 250 }}
+                    className="bg-secondary d-flex align-items-center justify-content-center text-white rounded"
+                    style={{ height: "250px" }}
                   >
                     No Image Available
                   </div>
