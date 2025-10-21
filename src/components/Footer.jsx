@@ -1,25 +1,25 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { FaEnvelope, FaMapMarkerAlt, FaPenAlt, FaPencilAlt, FaPhoneAlt } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaPencilAlt } from "react-icons/fa";
 
 function Footer() {
   return (
     <footer className="bg-dark text-white py-5">
       <Container>
-        <h2 className="fw-bold text-center mb-5"
+        <h2
+          className="fw-bold text-center mb-5"
           style={{
-            letterSpacing: "2px" ,
-            fontFamily: "'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont", 
-            fontWeight: 700
+            letterSpacing: "2px",
+            fontWeight: 700,
           }}
         >
           FRUITOPIA
         </h2>
 
         {/* CONTACT */}
-        <Row className="text-center gy-3 mb-5"
+        <Row
+          className="text-center gy-3 mb-5"
           style={{
-            fontFamily: "'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont", 
-            fontWeight: 600
+            fontWeight: 600,
           }}
         >
           <Col md>
@@ -37,10 +37,10 @@ function Footer() {
         </Row>
 
         {/* FOOTER TEXT */}
-        <p className="text-center pt-2"
+        <p
+          className="text-center pt-2"
           style={{
-            fontFamily: "'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont", 
-            fontWeight: 500
+            fontWeight: 500,
           }}
         >
           © 2025 All rights reserve. Designed by FRUITOPIA

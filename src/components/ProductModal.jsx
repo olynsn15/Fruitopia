@@ -1,20 +1,11 @@
-import { resolveImageLink } from "../api/fruit";
+import { useCart } from "../context/CartContext";
 
 function ProductModal({ product, onClose }) {
-  const name = product.name || product.title || `Product ${product.id || ""}`;
-  const price =
-    product.price ||
-    (product.prices && product.prices[0] && product.prices[0].price) ||
-    "N/A";
-  const vendors = product.vendors || [];
-  const img =
-    resolveImageLink(product.image_link) ||
-    product.image ||
-    (product._links &&
-      product._links.image &&
-      resolveImageLink(product._links.image.href));
-  const modified =
-    product.modified_at || product.modified || product.updated_at || "";
+  const { addToCart } = useCart();
+
+  if (!product) return null;
+
+  const { name, price, description, image } = product;
 
   return (
     <div
@@ -25,51 +16,50 @@ function ProductModal({ product, onClose }) {
       <div className="modal-dialog modal-lg modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">{name}</h5>
+            <h5 className="modal-title">Fruit Detail</h5>
             <button
               type="button"
               className="btn-close"
               onClick={onClose}
             ></button>
           </div>
+
           <div className="modal-body">
             <div className="row">
               <div className="col-md-5">
-                {img ? (
-                  <img src={img} alt={name} className="img-fluid rounded" />
+                {image ? (
+                  <img src={image} alt={name} className="img-fluid rounded" />
                 ) : (
-                  <div className="bg-secondary" style={{ height: 250 }} />
+                  <div
+                    className="bg-secondary d-flex align-items-center justify-content-center text-white"
+                    style={{ height: 250 }}
+                  >
+                    No Image Available
+                  </div>
                 )}
               </div>
+
               <div className="col-md-7">
-                <h4>{name}</h4>
-                <p>
-                  <strong>Price:</strong> {price}
+                <h4>
+                  <strong>{name}</strong>
+                </h4>
+                <p className="mb-4">
+                  <strong>Price : {price} IDR</strong>
                 </p>
-                {vendors.length > 0 && (
-                  <p>
-                    <strong>Vendors:</strong>{" "}
-                    {vendors.map((v) => v.name).join(", ")}
-                  </p>
-                )}
-                {modified && (
-                  <p>
-                    <small className="text-muted">
-                      Last modified: {new Date(modified).toLocaleString()}
-                    </small>
-                  </p>
-                )}
-                <hr />
-                <p>{product.description || product.long_description || ""}</p>
+                <p>{description}</p>
               </div>
             </div>
           </div>
+
           <div className="modal-footer">
-            <button className="btn btn-secondary" onClick={onClose}>
-              Close
-            </button>
-            <button className="btn btn-primary" disabled>
-              Add to cart
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                addToCart(product);
+                onClose();
+              }}
+            >
+              Add to Cart
             </button>
           </div>
         </div>

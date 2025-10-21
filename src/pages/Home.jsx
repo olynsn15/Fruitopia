@@ -26,8 +26,6 @@ function Home() {
           <h2
             className="mb-3"
             style={{
-              fontFamily:
-                "'SF Pro Display Bold', 'SF Pro Text', -apple-system, BlinkMacSystemFont",
               fontWeight: 700,
               letterSpacing: "1px",
             }}
@@ -37,7 +35,6 @@ function Home() {
           <p
             className="text-muted mb-4"
             style={{
-              fontFamily: "'SF Pro Text', -apple-system, BlinkMacSystemFont",
               fontSize: "1rem",
               lineHeight: "1.6",
             }}
@@ -55,8 +52,6 @@ function Home() {
             className="btn btn-dark px-5 py-3"
             style={{
               letterSpacing: "2px",
-              fontFamily:
-                "'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont",
               fontWeight: 600,
               fontSize: 20,
               textDecoration: "none",
@@ -73,8 +68,6 @@ function Home() {
           <h2
             className="mb-3"
             style={{
-              fontFamily:
-                "'SF Pro Display Bold', 'SF Pro Text', -apple-system, BlinkMacSystemFont",
               fontWeight: 700,
               letterSpacing: "1px",
             }}
@@ -84,7 +77,6 @@ function Home() {
           <p
             className="text-muted mb-4 mx-auto"
             style={{
-              fontFamily: "'SF Pro Text', -apple-system, BlinkMacSystemFont",
               fontSize: "1rem",
               lineHeight: "1.6",
             }}

@@ -1,47 +1,66 @@
-function ProductCard({ product, onDetail }) {
-  const id =
-    product.id ||
-    product.product_id ||
-    (product._links?.self?.href?.split("/").pop() ?? "");
+import { useState } from "react";
+import { Card, Button } from "react-bootstrap";
 
-  const name = product.name || product.title || `Product ${id}`;
-  const img = product.image_link;
-  const desc = product.description || product.short_description || "";
+function ProductCard({ product, onDetail, addToCart }) {
+  const [hovered, setHovered] = useState(false);
+
+  const id = product.id;
+  const name = product.name;
+  const img = product.image;
 
   return (
     <div className="col-md-3 mb-3">
-      <div className="card h-100">
+      <Card
+        className="border-0 position-relative"
+        style={{
+          width: "100%",
+          height: "260px",
+          overflow: "hidden",
+          borderRadius: "10px",
+          cursor: "pointer",
+        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        {/* Product Image */}
         {img ? (
-          <img
+          <Card.Img
             src={img}
-            className="card-img-top"
             alt={name}
-            style={{ objectFit: "cover", height: 200 }}
+            className="position-absolute top-0 start-0 w-100 h-100"
+            style={{ objectFit: "cover", borderRadius: "10px" }}
           />
         ) : (
-          <div
-            className="bg-secondary text-white d-flex align-items-center justify-content-center"
-            style={{ height: 200 }}
-          >
-            No image
+          <div className="position-absolute top-0 start-0 w-100 h-100 bg-secondary text-white d-flex align-items-center justify-content-center">
+            No Image
           </div>
         )}
-        <div className="card-body d-flex flex-column">
-          <h5 className="card-title">{name}</h5>
-          <p className="card-text text-truncate">{desc}</p>
-          <div className="mt-auto">
-            <button
-              className="btn btn-primary me-2"
+
+        {/* Overlay */}
+        <div
+          className="position-absolute w-100 h-100 d-flex flex-column justify-content-center align-items-center"
+          style={{
+            left: 0,
+            bottom: hovered ? "0" : "-100%",
+            backgroundColor: "rgba(0, 0, 0, 0.6)",
+            transition: "bottom 0.4s ease",
+          }}
+        >
+          <h5 className="text-white text-center mb-3">{name}</h5>
+          <div>
+            <Button
+              variant="primary"
+              className="me-2"
               onClick={() => onDetail(id)}
             >
               Details
-            </button>
-            <button className="btn btn-outline-secondary" disabled>
-              Buy
-            </button>
+            </Button>
+            <Button variant="light" onClick={() => addToCart(product)}>
+              Buy Now
+            </Button>
           </div>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }

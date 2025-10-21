@@ -68,7 +68,7 @@ function Shop() {
 
   // DISPLAYING PRODUCTS
   return (
-    <div className="container py-5 mb-4 min-vh-100 d-flex flex-column justify-content-center">
+    <div className="container py-5 mb-4 min-vh-100 d-flex flex-column justify-content-start">
       <h2 className="mb-4">Products</h2>
 
       {loading ? (
@@ -84,4 +84,4 @@ function Shop() {
   );
 }
 
-export default Shop
+export default Shop;
