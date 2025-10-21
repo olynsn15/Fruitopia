@@ -5,7 +5,7 @@ function ProductModal({ product, onClose }) {
 
   if (!product) return null;
 
-  const { name, price, description, image } = product;
+  const { name, price, description, image, unit_amount } = product;
 
   return (
     <div
@@ -43,9 +43,14 @@ function ProductModal({ product, onClose }) {
                 <h4>
                   <strong>{name}</strong>
                 </h4>
-                <p className="mb-4">
-                  <strong>Price : {price} IDR</strong>
-                </p>
+                <div className="mb-4">
+                  <p className="mb-0">
+                    <strong>Price : {price} IDR</strong>
+                  </p>
+                  <p>
+                    <strong>Amount : {unit_amount}</strong>
+                  </p>
+                </div>
                 <p>{description}</p>
               </div>
             </div>

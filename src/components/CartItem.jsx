@@ -25,8 +25,8 @@ function CartItem({ item, updateQuantity }) {
           </button>
         </div>
       </div>
-      <div>
-        <strong>${(item.price * item.quantity).toFixed(2)}</strong>
+      <div className="px-3">
+        <strong>{item.price * item.quantity} IDR</strong>
       </div>
     </div>
   );

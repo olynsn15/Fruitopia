@@ -37,14 +37,14 @@ function Cart() {
           <h3>Summary</h3>
           <div className="border rounded p-4 bg-white shadow-sm">
             <p>
-              <strong>Subtotal:</strong> ${subtotal.toFixed(2)}
+              <strong>Subtotal :</strong> {subtotal} IDR
             </p>
             <p>
-              <strong>Tax (5%):</strong> ${tax.toFixed(2)}
+              <strong>Tax :</strong> {tax} IDR
             </p>
             <hr />
             <h5>
-              <strong>Total: ${total.toFixed(2)}</strong>
+              <strong>Total : {total} IDR</strong>
             </h5>
             <button className="btn btn-primary w-100 mt-3">Checkout</button>
           </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getFruits, getFruitByID, resolveImageLink } from "../api/fruit";
+import { getFruits, getFruitByID } from "../api/fruit";
 import ProductModal from "../components/ProductModal";
 import ProductList from "../components/ProductList";
 import LoadingSpinner from "../components/LoadingSpinner";
@@ -10,63 +10,36 @@ function Shop() {
   const [selected, setSelected] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  // FETCHING DATA FROM API + SAVING INTO ITEMS
+  // FETCH FRUITS FROM API
   useEffect(() => {
     async function load() {
       try {
         setLoading(true);
         const data = await getFruits();
-        const list = data.products || data;
-
-        const withDetails = await Promise.all(
-          list.map(async (p) => {
-            const id =
-              p.id ||
-              p.product_id ||
-              (p._links?.self?.href?.split("/").pop() ?? null);
-
-            if (!id) return p;
-
-            try {
-              const detail = await getFruitByID(id);
-              return {
-                ...p,
-                ...detail,
-                image_link: resolveImageLink(detail.image_link),
-              };
-            } catch (e) {
-              console.warn("Failed to fetch product detail for id:", id, e);
-              return p;
-            }
-          })
-        );
-        setItems(withDetails);
-      } catch (e) {
-        console.error(e);
+        setItems(Array.isArray(data) ? data : []); // since your endpoint returns an array
+      } catch (error) {
+        console.error("Failed to load fruits:", error);
         setItems([]);
       } finally {
         setLoading(false);
       }
     }
+
     load();
   }, []);
 
-  // OPEN DETAIL MODAL
+  // OPEN PRODUCT DETAIL MODAL
   async function openDetail(id) {
     try {
-      const data = await getFruitByID(id);
-      setSelected({
-        ...data,
-        image_link: resolveImageLink(data.image_link),
-      });
+      const fruit = await getFruitByID(id);
+      setSelected(fruit);
       setShowModal(true);
-    } catch (e) {
-      console.error(e);
-      alert("Failed to load product details");
+    } catch (error) {
+      console.error("Failed to load product detail:", error);
+      alert("Failed to load product detail.");
     }
   }
 
-  // DISPLAYING PRODUCTS
   return (
     <div className="container py-5 mb-4 min-vh-100 d-flex flex-column justify-content-start">
       <h2 className="mb-4">Products</h2>
