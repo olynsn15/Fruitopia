@@ -84,4 +84,4 @@ function Shop() {
   );
 }
 
-export default Shop;
+export default Shop
