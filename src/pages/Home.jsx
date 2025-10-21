@@ -5,13 +5,16 @@ function Home() {
   return (
     <div>
       {/* HERO SECTION */}
-      <section>
-        <Carousel>
+      <section style={{ height: "calc(100vh - 56px)" }}>
+        <Carousel className="h-100">
           {sliderImages.map((src, i) => (
-            <Carousel.Item key={i}>
+            <Carousel.Item key={i} className="h-100">
               <img
-                className="d-block w-100 object-fit-cover"
-                style={{ height: "90vh" }}
+                className="d-block w-100 h-100"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                }}
                 src={src}
                 alt={`Slide ${i + 1}`}
               />
