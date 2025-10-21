@@ -3,7 +3,7 @@
 
 ## TO DO
 - styling shop
-- lengkapin API
+- lengkapin API ✅
 - alert kalau barang berhasil ditambahkan ke cart
 - pop up ada berapa item di cart?
 - hapus item dari cart
