@@ -22,7 +22,7 @@ function ProductCard({ product, onDetail, addToCart }) {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        {/* Product Image */}
+        {/* PRODUCT IMAGE */}
         {img ? (
           <Card.Img
             src={img}
@@ -36,7 +36,7 @@ function ProductCard({ product, onDetail, addToCart }) {
           </div>
         )}
 
-        {/* Overlay */}
+        {/* OVERLAY */}
         <div
           className="position-absolute w-100 h-100 d-flex flex-column justify-content-center align-items-center"
           style={{
