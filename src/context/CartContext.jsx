@@ -20,11 +20,14 @@ export function CartProvider({ children }) {
   };
 
   const updateQuantity = (id, quantity) => {
-    setCart((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
-      )
-    );
+    setCart((prev) => {
+      if (quantity <= 0) {
+        return prev.filter((item) => item.id !== id);
+      }
+      return prev.map((item) =>
+        item.id === id ? { ...item, quantity } : item
+      );
+    });
   };
 
   return (
