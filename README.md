@@ -5,7 +5,7 @@
 - styling shop
 - lengkapin API ✅
 - alert kalau barang berhasil ditambahkan ke cart ✅
-- pop up ada berapa item di cart?
+- pop up ada berapa item di cart? ✅
 - hapus item dari cart ✅
 - checkout bikin alert "checkout successful!" + reload page ✅
 - styling cart
