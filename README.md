@@ -1,6 +1,17 @@
 # FRUITOPIA
 <br>
 
+## TO DO
+- styling shop
+- lengkapin API ✅
+- alert kalau barang berhasil ditambahkan ke cart
+- pop up ada berapa item di cart?
+- hapus item dari cart ✅
+- checkout bikin alert "checkout successful!" + reload page
+- styling cart
+- testimonials page
+- contact page
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
