@@ -10,13 +10,13 @@ function Shop() {
   const [selected, setSelected] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  // FETCH FRUITS FROM API
+  // FETCH FROM API
   useEffect(() => {
     async function load() {
       try {
         setLoading(true);
         const data = await getFruits();
-        setItems(Array.isArray(data) ? data : []); // since your endpoint returns an array
+        setItems(Array.isArray(data) ? data : []);
       } catch (error) {
         console.error("Failed to load fruits:", error);
         setItems([]);

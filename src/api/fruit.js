@@ -2,8 +2,7 @@ const API_BASE = "https://68f77e50f7fb897c66160eaa.mockapi.io";
 const BASE = `${API_BASE}/fruits`;
 
 export async function getFruits(start = 1, limit = 100) {
-  // MockAPI supports pagination via ?page= and ?limit=, so we can use those instead of start.
-  const page = start; // rename parameter for clarity
+  const page = start;
   const url = `${BASE}?page=${page}&limit=${limit}`;
   const res = await fetch(url);
 

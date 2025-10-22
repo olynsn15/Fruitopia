@@ -49,7 +49,7 @@ function CartItem({ item, updateQuantity }) {
         </div>
       </div>
 
-      {/* 🧩 Reusable Remove Confirmation Modal */}
+      {/* CONFIRMATION MODAL */}
       <RemoveConfirmModal
         show={showModal}
         onHide={() => setShowModal(false)}

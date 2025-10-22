@@ -14,7 +14,7 @@ function Cart() {
   return (
     <div className="container min-vh-100 d-flex justify-content-center py-5">
       <div className="row w-100">
-        {/* Left - Cart List */}
+        {/* CART ITEMS */}
         <div className="col-md-6 border-end d-flex flex-column pe-4">
           <h3 className="mb-4">Your Cart</h3>
           <div className="flex-grow-1 overflow-auto">
@@ -32,7 +32,7 @@ function Cart() {
           </div>
         </div>
 
-        {/* Right - Summary */}
+        {/* TOTAL PRICE */}
         <div className="col-md-6 d-flex flex-column ps-4">
           <h3>Summary</h3>
           <div className="border rounded p-4 bg-white shadow-sm">

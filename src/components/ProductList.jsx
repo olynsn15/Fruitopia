@@ -1,8 +1,8 @@
 import ProductCard from "./ProductCard";
-import { useCart } from "../context/CartContext"; // ✅ Import Cart Context
+import { useCart } from "../context/CartContext";
 
 function ProductList({ items, onDetail }) {
-  const { addToCart } = useCart(); // ✅ Get addToCart from context
+  const { addToCart } = useCart();
 
   if (!items || items.length === 0) {
     return <p>No products found.</p>;
@@ -15,7 +15,7 @@ function ProductList({ items, onDetail }) {
           key={product.id || idx}
           product={product}
           onDetail={onDetail}
-          addToCart={addToCart} // ✅ Pass to ProductCard
+          addToCart={addToCart}
         />
       ))}
     </div>
