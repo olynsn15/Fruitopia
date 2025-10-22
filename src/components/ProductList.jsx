@@ -1,7 +1,7 @@
 import ProductCard from "./ProductCard";
 import { useCart } from "../context/CartContext";
 
-function ProductList({ items, onDetail }) {
+function ProductList({ items, onDetail, onAddToCart }) {
   const { addToCart } = useCart();
 
   if (!items || items.length === 0) {
@@ -10,12 +10,12 @@ function ProductList({ items, onDetail }) {
 
   return (
     <div className="row">
-      {items.map((product, idx) => (
+      {items.map((product) => (
         <ProductCard
-          key={product.id || idx}
+          key={product.id}
           product={product}
           onDetail={onDetail}
-          addToCart={addToCart}
+          addToCart={() => onAddToCart(product, addToCart)} // fix toast trigger
         />
       ))}
     </div>

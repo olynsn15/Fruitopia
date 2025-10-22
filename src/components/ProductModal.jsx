@@ -1,11 +1,19 @@
 import { useCart } from "../context/CartContext";
 
-function ProductModal({ product, onClose }) {
+function ProductModal({ product, onClose, onAddToCart }) {
   const { addToCart } = useCart();
 
   if (!product) return null;
 
   const { name, price, description, image, unit_amount } = product;
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    onAddToCart(product, addToCart); // 🔥 trigger toast in Shop.jsx
+    setTimeout(() => {
+      onClose();
+    }, 150);
+  };
 
   return (
     <div
@@ -67,13 +75,7 @@ function ProductModal({ product, onClose }) {
           </div>
 
           <div className="modal-footer">
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                addToCart(product);
-                onClose();
-              }}
-            >
+            <button className="btn btn-primary" onClick={handleAddToCart}>
               Add to Cart
             </button>
           </div>
