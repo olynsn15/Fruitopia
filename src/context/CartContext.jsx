@@ -20,6 +20,12 @@ export function CartProvider({ children }) {
   };
 
   const updateQuantity = (id, quantity) => {
+    // If id is null → clear entire cart
+    if (id === null) {
+      setCart([]);
+      return;
+    }
+
     setCart((prev) => {
       if (quantity <= 0) {
         return prev.filter((item) => item.id !== id);

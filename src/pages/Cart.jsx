@@ -1,8 +1,13 @@
+import { useState } from "react";
 import { useCart } from "../context/CartContext";
 import CartItem from "../components/CartItem";
+import CheckoutModal from "../components/CheckoutModal";
+import EmptyCartToast from "../components/EmptyCartToast";
 
 function Cart() {
   const { cart, updateQuantity } = useCart();
+  const [showCheckoutModal, setShowCheckoutModal] = useState(false);
+  const [showEmptyToast, setShowEmptyToast] = useState(false);
 
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -10,6 +15,20 @@ function Cart() {
   );
   const tax = subtotal * 0.05;
   const total = subtotal + tax;
+
+  const handleCheckout = () => {
+    if (cart.length === 0) {
+      setShowEmptyToast(true);
+      return;
+    }
+    setShowCheckoutModal(true);
+  };
+
+  const handleCloseCheckout = () => {
+    setShowCheckoutModal(false);
+    // Clear cart after checkout success
+    updateQuantity(null, 0); // this will trigger below fix in CartContext
+  };
 
   return (
     <div className="container min-vh-100 d-flex justify-content-center py-5">
@@ -46,10 +65,22 @@ function Cart() {
             <h5>
               <strong>Total : {total} IDR</strong>
             </h5>
-            <button className="btn btn-primary w-100 mt-3">Checkout</button>
+            <button
+              className="btn btn-primary w-100 mt-3"
+              onClick={handleCheckout}
+            >
+              Checkout
+            </button>
           </div>
         </div>
       </div>
+
+      {/* MODALS */}
+      <CheckoutModal show={showCheckoutModal} onClose={handleCloseCheckout} />
+      <EmptyCartToast
+        show={showEmptyToast}
+        onClose={() => setShowEmptyToast(false)}
+      />
     </div>
   );
 }
